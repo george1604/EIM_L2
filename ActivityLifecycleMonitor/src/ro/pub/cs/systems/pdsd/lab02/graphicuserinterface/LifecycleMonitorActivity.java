@@ -73,7 +73,17 @@ public class LifecycleMonitorActivity extends Activity {
         Button okButton = (Button)findViewById(R.id.ok_button);
         okButton.setOnClickListener(buttonClickListener);
         Button cancelButton = (Button)findViewById(R.id.cancel_button);
-        cancelButton.setOnClickListener(buttonClickListener);
+        cancelButton.setOnClickListener(new Button.OnClickListener(){	
+	    	@Override
+	    	public void onClick(View view) {
+	    		Activity A = (Activity) view.getContext();
+	    		A.finish();
+	    	}
+	    });
+        if(savedInstanceState != null)
+        	Log.d(Constants.TAG, savedInstanceState.toString());
+        else
+        	Log.d(Constants.TAG, "onCreate nu are stare");
         Log.d(Constants.TAG, "onCreate() method was invoked");
     }    
 
@@ -95,4 +105,47 @@ public class LifecycleMonitorActivity extends Activity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		Log.d(Constants.TAG, "onDestroy method was invoked");
+	}
+
+	@Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		Log.d(Constants.TAG, "onPause method was invoked");
+	}
+
+	@Override
+	protected void onRestart() {
+		// TODO Auto-generated method stub
+		super.onRestart();
+		Log.d(Constants.TAG, "onRestart method was invoked");
+	}
+
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		Log.d(Constants.TAG, "onResume method was invoked");
+	}
+
+	@Override
+	protected void onStart() {
+		// TODO Auto-generated method stub
+		super.onStart();
+		Log.d(Constants.TAG, "onStart method was invoked");
+	}
+
+	@Override
+	protected void onStop() {
+		// TODO Auto-generated method stub
+		super.onStop();
+		Log.d(Constants.TAG, "onStop method was invoked");
+	}
+    
 }
